@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Select</title>
+  <link rel="stylesheet" href="zebra.css" type="text/css" media="screen" charset="utf-8" />  
+  <script src="jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="script.js"></script>
+ </head>
+ <body>
+ 	<p>透明度调整：</p>
+ 	<div id="opacity" class="opacity">
+	</div>
+	<script>
+	var i;
+	showOPacity(window.opener.configId);
+	function showOPacity(a)
+			{
+				if (a=='.config')
+				{
+					$('#opacity').append('<div id="bar" class="bar">'+
+			  '<div id="progress_bar" class="progress_bar"></div>'+
+			  '<div id="progress_bg"  class="progress_bg"></div>'+
+			  '<div id="progress_btn"  class="progress_btn"></div>'+'<br/>'+
+			  '<input type="text" id="text" size="2" border="0" value=0>'+'%'+
+	          '</div><br/><br/><br/><br/>');
+			  bar('#bar','#progress_bg','#progress_btn','#progress_bar','text','#box');
+			  	}
+				else
+				{
+					for(i=1;i<20;i++)//默认最多添加20个浮动框
+					{
+						if(a=='.config'+i+'') 
+						{
+							break;
+						}
+					}
+//					document.getElementById('#opacity').innerHTML=null;
+					$('#opacity').append('<div id="bar'+i+'" class="bar">'+
+					  '<div id="progress_bar'+i+'" class="progress_bar"></div>'+
+					  '<div id="progress_bg'+i+'"  class="progress_bg"></div>'+
+					  '<div id="progress_btn'+i+'"  class="progress_btn"></div>'+'<br/>'+
+					  '<input type="text" id="text'+i+'" size="2" border="0" value=0 >'+'%'+
+					  '</div><br/><br/><br/><br/>');
+					bar('#bar'+i+'','#progress_bg'+i+'','#progress_btn'+i+'','#progress_bar'+i+'','text'+i+'','#box'+i+'');
+				}
+
+
+			}
+	function bar(a,b,c,d,f,g)//a='#bar'b='#progress_bg'c='#progress_btn' d='#progress_bar'f='text' g='#box'
+{
+		var tag = false,dx = 0,left = 0,bgleft = 0;
+		 $(c).mousedown(function(e) {
+		  dx = e.pageX - left;
+		  tag = true;
+		 });
+		 $(a).mouseup(function(e) {
+		  tag = false;
+		 });
+		 $(c).mousemove(function(e) {//鼠标移动
+		  if (tag) {
+		   left = e.pageX - dx;
+		   if (left <= 0) {
+			left = 0;
+		   }else if (left > 270) {
+			left = 270;
+		   }
+		   $(c).css('left', left);
+		   $(d).animate({width:left},1);
+		   document.getElementById(f).value=parseInt((left/270)*100);
+//		   $(f).html(parseInt((left/270)*100) + '%');
+		   window.opener.chgOpacity(g,(left/270+0.1));
+//     	   $(g).css('background-color', 'rgba(255,255,255,'+(left/270+0.1)+')');
+		  }
+		 });
+		 $(b).click(function(e) {//鼠标点击
+		  if (!tag) {
+		   bgleft = $(b).offset().left;
+		   left = e.pageX - bgleft;
+		   if (left <= 0) {
+				left=0;
+		   }else if (left > 270) {
+			left = 270;
+		   }
+		   $(c).css('left', left);
+		   $(d).animate({width:left},270);//
+		   document.getElementById(f).value=parseInt((left/270)*100);
+//		   $(f).html(parseInt((left/270)*100) + '%');
+		   window.opener.chgOpacity(g,(left/270+0.1));
+//		   $(g).css('background-color', 'rgba(255,255,255,'+(left/270+0.1)+')');
+		  }
+		 });
+		 $(d).click(function(e) {//鼠标点击
+		  if (!tag) {
+		   bgleft = $(b).offset().left;
+		   left = e.pageX - bgleft;
+		   if (left <= 0) {
+				left=0;
+		   }else if (left > 270) {
+			left = 270;
+		   }
+		   $(c).css('left', left);
+		   $(d).animate({width:left},270);//
+		   document.getElementById(f).value=parseInt((left/270)*100);
+//		   $(f).html(parseInt((left/270)*100) + '%');
+		   window.opener.chgOpacity(g,(left/270+0.1));
+//		   $(g).css('background-color', 'rgba(255,255,255,'+(left/270+0.1)+')');
+		  }
+		 });
+		 document.getElementById(f).onchange=function(){
+			 var chg= document.getElementById(f).value;
+			 left=chg/100*270;
+			 if (left <= 0) {
+			left = 0;
+		   }else if (left > 270) {
+			left = 270;
+		   }
+		   $(c).css('left', left);
+		   $(d).animate({width:left},1);
+//		   $(f).html(parseInt((left/270)*100) + '%');
+		   window.opener.chgOpacity(g,(left/270+0.1));
+		 }
+}
+	</script>
+	<div id="Select" class="Select">
+	<span class="categery">图形选择</span>
+       <select  id="mySelect" class="choose"   onchange='showSelect($("#mySelect").val());'>
+            <option value="LineChart">折线图</option>
+            <option value="Histogram">柱状图</option>
+            <option value="EG">等数据量图</option>
+       </select>
+	   <br/>
+	   <form id="selectInfo" name="selectInfo" >
+	   		<div id='chart1' class='chart'>
+<!-- 	   X轴选择 -->
+			X轴：&nbsp&nbsp
+			<label><input type='checkbox' name='select11' value='position' onClick='javascript:checkCon(0)'>点位&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select11' value='date' onClick='javascript:checkCon(1)' >时间&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select11' value='temp'  onClick='javascript:checkCon(2)'>温度&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select11' value='sali' onClick='javascript:checkCon(3)'>盐度&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select11"' value='ni'  onClick='javascript:checkCon(4)'>硝酸盐含量</label><br/>
+<!-- 			Y轴选择 -->
+			Y轴：&nbsp&nbsp
+			<label><input type='checkbox' name='select12' value='dep'  onClick='javascript:checkCon(0)'>深度&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select12' value='temp' onClick='javascript:checkCon(1)'>温度&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select12' value='sali' onClick='javascript:checkCon(2)'>盐度&nbsp&nbsp&nbsp&nbsp</label>
+			<label><input type='checkbox' name='select12' value='ni'  onClick='javascript:checkCon(3)'>硝酸盐含量</label>
+			</div>
+		</form>
+	   <input type="button" onclick="check();" value="确定"></input>
+</div>
+ <script>
+ var index;
+function showSelect(value)
+{//规定折线图XY轴为11/12柱状图XY轴为21/22等数据量图XY轴为31/32
+	text="";
+	if(value=="LineChart"||value=="Histogram")
+	{
+		document.getElementById("selectInfo").innerHTML=null;
+			if(value=="LineChart") index=1;
+			else if(value=="Histogram") index=2;
+			text=text+"<div id='chart"+index+"' class='chart'>";
+			//X轴选择
+			text=text+"X轴："+"&nbsp&nbsp"
+			text = text +"<label>"+ "<input type='checkbox' name='select"+index+""+1+"' value='position' onClick='javascript:checkCon(0)'>"+"点位"+"&nbsp&nbsp&nbsp&nbsp"+"</label>"+"<label>"+"<input type='checkbox' name='select"+index+""+1+"' value='date' onClick='javascript:checkCon(1)' >"+"时间"+"&nbsp&nbsp&nbsp&nbsp"+"</label>";
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+1+"' value='temp'  onClick='javascript:checkCon(2)'>"+"温度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>"+"<label>"+"<input type='checkbox' name='select"+index+""+1+"' value='sali' onClick='javascript:checkCon(3)'>"+"盐度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>";
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+1+"' value='ni'  onClick='javascript:checkCon(4)'>"+"硝酸盐含量"+"</label>";
+			//Y轴选择
+			text=text+"<br\>"+"Y轴："+"&nbsp&nbsp"
+			text = text +"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='dep'  onClick='javascript:checkCon(0)'>"+"深度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>"
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='temp' onClick='javascript:checkCon(1)' >"+"温度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>"+"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='sali' onClick='javascript:checkCon(2)'>"+"盐度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>";
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='ni'  onClick='javascript:checkCon(3)'>"+"硝酸盐含量"+"</label>";
+			text = text+ "</div>";
+		document.getElementById("selectInfo").innerHTML=text;
+	}
+	else if (value=="EG")
+	{
+		text=null;
+		text="<div id='chart"+3+"' class='chart'>";
+		index=3;
+			//XY轴选择
+			text=text+"XY轴："+"&nbsp&nbsp"
+			text = text +"<label>"+"<input type='checkbox' name='select"+index+""+1+"' value='lonlat' onClick='javascript:checkCon(0)' >"+"经纬度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>";
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+1+"' value='lonlatDep'onClick='javascript:checkCon(1)' >"+"经纬度+深度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>";
+			//数据选择
+			text=text+"<br\>"+"数据："+"&nbsp&nbsp&nbsp";
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='temp' onClick='javascript:checkCon1(0)'>"+"温度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>"+"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='sali' onClick='javascript:checkCon1(1)'>"+"盐度"+"&nbsp&nbsp&nbsp&nbsp"+"</label>";
+			text=text+"<label>"+"<input type='checkbox' name='select"+index+""+2+"' value='ni' onClick='javascript:checkCon1(2)'>"+"硝酸盐含量"+"</label>";
+			text = text+ "</div>";
+		document.getElementById("selectInfo").innerHTML=text;
+	}
+
+}
+function checkCon(cb)
+{
+			if($("input[name='select11']:checked").length >= 2)
+		 {
+				for (j = 0; j < 10; j++) 
+			{
+				if (eval("document.selectInfo.select12[" + j + "].checked") == true) {
+				document.selectInfo.select12[j].checked = false;
+				if (j == cb) {
+				document.selectInfo.select12[j].checked = true;
+				 }
+				}
+				
+			}
+		 }
+
+		   if($("input[name='select21']:checked").length >= 2)
+		 {
+				for (j = 0; j < 10; j++) 
+			{
+				if (eval("document.selectInfo.select22[" + j + "].checked") == true) {
+				document.selectInfo.select22[j].checked = false;
+				if (j == cb) {
+				document.selectInfo.select22[j].checked = true;
+				 }
+				}
+				
+			}
+		 }
+
+			for (j = 0; j < 3; j++) 
+					{
+							if (eval("document.selectInfo.select31[" + j + "].checked") == true) {
+							document.selectInfo.select31[j].checked = false;
+							if (j == cb) {
+							document.selectInfo.select31[j].checked = true;
+							 }
+							}
+						
+					}
+			
+
+}
+ function checkCon1(cb)
+ {
+	for (j = 0; j < 3; j++ )
+			{
+				if (eval("document.selectInfo.select32[" + j + "].checked") == true) {
+					document.selectInfo.select32[j].checked = false;
+						if (j == cb) {
+						document.selectInfo.select32[j].checked = true;
+					       }
+					}
+			}
+ }
+
+			var chestr="";
+			function check()//提交函数，提交后父页面即获得相应的勾选信息
+			{
+				var k;
+				var str=document.getElementById("mySelect");
+				var objarray=str.length;
+				
+				for (k=0;k<objarray;k++)
+				{
+				  if(str[k].selected == true)
+				  {
+				   chestr="图形为："+str[k].value+"\n"+"X:"+" ";
+				   var str1=document.getElementsByName("select"+(k+1)+""+1+"");
+					var objarray1=str1.length;
+					for (var i=0;i<objarray1;i++)
+					{
+					  if(str1[i].checked == true)
+					  {
+					   chestr=chestr+str1[i].value+" ";
+					  }
+					}
+					chestr=chestr+"\n"+"Y:"+" ";
+					var str2=document.getElementsByName("select"+(k+1)+""+2+"");
+					var objarray2=str2.length;
+					for (var i=0;i<objarray2;i++)
+					{
+					  if(str2[i].checked == true)
+					  {
+					   chestr=chestr+str2[i].value+" ";
+					   if (str2[i].value=="dep")
+					   {
+						   window.opener.addDep(window.opener.configId);
+					   }
+					  }
+					}
+				  }
+				  	
+				}
+//				if (window.opener.configId=='.config')
+//				{
+//					window.opener.selectChart(chestr,'newhtml');
+//				}
+//				else if (window.opener.configId=='.config1')
+//				{
+//					window.opener.selectChart(chestr,'newhtml1');
+//				}
+				window.opener.test(chestr);
+
+			}
+
+</script> 
+ </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+<!--        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+<meta charset="gb2312">
+   </head>
+   <body style="height: 100%; margin: 0">
+<!--    		<h1>用户选择</h1> -->
+<!-- 			<hr> -->
+<!-- 			<form action="dologin.jsp" name="loginForm"method="post"><!-- method提交方式用的是get，但是get安全性较低所以不推荐用get -->
+			<table>
+				<tr>
+					<p>请输入起始位置：<input id="start1" type="text" name="username" value="纬度" size="5" onfocus="javascript:if(this.value=='纬度')this.value='';"  onblur='if(this.value==""){this.value="纬度";};'> <input id="start2" type="text" name="username" value="经度" size="5" onfocus="javascript:if(this.value=='经度')this.value='';"  onblur='if(this.value==""){this.value="经度";};'></p>
+					<p>请输入终止位置：<input id="end1" type="text" name="username" value="纬度" size="5" onfocus="javascript:if(this.value=='纬度')this.value='';"  onblur='if(this.value==""){this.value="纬度";};'> <input id="end2" type="text" name="username" value="经度" size="5" onfocus="javascript:if(this.value=='经度')this.value='';"  onblur='if(this.value==""){this.value="经度";};'></p>
+				</tr>
+			</table>
+<!-- 				<tr> -->
+<!-- 					<td>密码：</td> -->
+<!-- 					<td><input type="password" name="username"></td> -->
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 					<td colspan="2"><input type="submit" value="get" id="get"></td> -->
+<!-- 				</tr> -->
+      <input type="button" id="get" value="get" onclick="alert('123');"/>
+			
+			<hr>
+<!-- 			</form> -->
+       <div id="container" style="height: 100%"></div>
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script> -->
+<!--        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script> -->
+<!--        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> -->
+	   <script type="text/javascript" src="echarts.js"></script>
+	   <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+	   <script type="text/javascript" src="thermochart.js"></script>
+       <script type="text/javascript">
+		thermochart(-90,-180,90,180);
+       </script>
+
+	   <script>
+			$ ("#get").click (function ()
+	   {
+		    var a,b,c,d;
+			a=document.getElementById("start1").value;
+			b=document.getElementById("start2").value;
+			c=document.getElementById("end1").value;
+			d=document.getElementById("end2").value;
+	   		if(a=='纬度'||b=='经度'||c=='纬度'||d=='经度')
+			alert("请输入起始点和终点位置");
+			else{
+				if(a==c||b==d)
+				{
+					if(a==c)
+					linesimple(b*1,d*1);
+					else linesimple(a*1,c*1);
+				}
+				else
+				thermochart(a*1,b*1,c*1,d*1);
+			}
+
+
+	   })
+			</script>
+   </body>
+</html>

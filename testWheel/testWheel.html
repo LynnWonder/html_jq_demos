@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml" >  
+<head>  
+    <title>图片放大缩小</title>  
+    <style type="text/css">  
+      div{
+          width: 100px;
+          height: 100px;
+      }
+    </style>  
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>  
+    <script type="text/javascript" src="layer.js"></script> 
+</head>  
+<body> 
+    <div id="mqp">
+        <img id="myimage" src="123.jpg" alt="my image" /> 
+    </div>
+    <script type="text/javascript">
+        var myimage = document.getElementById("myimage"); 
+            // IE9, Chrome, Safari, Opera  
+            myimage.addEventListener("mousewheel", MouseWheelHandler, false);  
+            // Firefox  
+            myimage.addEventListener("DOMMouseScroll", MouseWheelHandler, false); 
+            myimage.attachEvent("onmousewheel", MouseWheelHandler);
+        function MouseWheelHandler(e) {  
+            // cross-browser wheel delta  
+            var e = window.event || e; // old IE support  
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            myimage.style.width = Math.max(50, Math.min(1800, myimage.width + (30 * delta))) + "px"; 
+            return false;  
+        } 
+    </script>  
+</body>  
+</html>

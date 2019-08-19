@@ -1,0 +1,60 @@
+[
+    {
+        "Longitude": 0,
+        "Latitude": 0,
+        "Depth": 10,
+        "Time": "2012-08-29",
+	"Temp": 20
+    },
+    {
+        "Longitude": 0,
+        "Latitude": 10,
+        "Depth": 20,
+        "Time": "2013-08-29",
+	"Temp": 15
+    },
+    {
+        "Longitude": 10,
+        "Latitude": 20,
+        "Depth": 30,
+        "Time": "2014-08-29",
+	"Temp": 12
+    },
+    {
+        "Longitude": 20,
+        "Latitude": 30,
+        "Depth": 40,
+        "Time": "2015-08-29",
+	"Temp": 10
+    },
+    {
+        "Longitude": 30,
+        "Latitude": 100,
+        "Depth": 50,
+        "Time": "2016-08-29",
+	"Temp": 5
+    },
+    {
+        "Longitude": 100,
+        "Latitude": 20,
+        "Depth": 60,
+        "Time": "2017-08-29",
+	"Temp": 8
+    },
+    {
+        "Longitude": -12,
+        "Latitude": 20,
+        "Depth": 20,
+        "Time": "2017-08-29",
+	"Temp": 15
+    },
+    {
+        "Longitude": -10,
+        "Latitude": 20,
+        "Depth": 20,
+        "Time": "2017-08-29",
+	"Temp": 5
+    }
+
+
+]

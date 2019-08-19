@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>StarTrackr!</title>
+  
+  <link rel="stylesheet" href="base.css" type="text/css" media="screen" charset="utf-8" />  
+  <link rel="stylesheet" href="zebra.css" type="text/css" media="screen" charset="utf-8" />  
+
+  <script src="jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="drag.js"></script>
+  <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="EchartJs/echarts.js"></script>
+  <script type="text/javascript" src="line-draggable.js"></script>
+  <script type="text/javascript" src="area.js"></script>
+<script>
+//配置页面传值
+var chartType="";
+var configId="";
+function selectChart(m,id)
+{
+	if (m=="LineChart")
+	{
+		linedraggable(id);
+	}
+	else if (m=="histogram")
+	{
+		area(id);
+	}
+}
+function chgOpacity(a,b)//a是box的ID，b是数值
+{
+	 $(a).css('background-color', 'rgba(255,255,255,'+b+')');
+}
+
+function test(a)
+{
+	alert(a);
+}
+function addDep(a)
+{
+	var x;
+	if (a=='.config')
+	{
+		$('#addDep').append('<input id="depth" class="depth" type="text" style="height:20px,width:100px" value="请输入深度：/m"' +
+			'</input>');
+			var dep= document.getElementById('depth');
+		dep.onfocus=function(){
+			if(this.value=='请输入深度：/m')
+			this.value='';	
+		}
+		dep.onblur=function(){
+			if(this.value=="")
+			{this.value="请输入深度：/m";};
+			}
+		depthButton('#depth','depth');
+	}
+				else
+				{
+					for(x=1;x<20;x++)//默认最多添加20个浮动框
+					{
+						if(a=='.config'+x+'') 
+						{
+							break;
+						}
+					}
+					
+					$('#addDep'+x+'').append('<input id="depth'+x+'" class="depth" type="text" style="height:20px,width:100px" value="请输入深度：/m"' +
+						'</input>');
+						var dep= document.getElementById('depth'+x+'');
+					dep.onfocus=function(){
+						if(this.value=='请输入深度：/m')
+						this.value='';	
+					}
+					dep.onblur=function(){
+						if(this.value=="")
+						{this.value="请输入深度：/m";};
+						}
+					depthButton('#depth'+x+'','depth'+x+'');
+
+				}
+	
+}
+</script>
+</head>
+
+
+<body>
+  
+      <input type="button" id="toggleButton" value="ADD" />
+
+	    <div id="box" class="box" > 
+		<span id="close" class="close"></span>
+		<span id="config" class="config"></span>
+		<span id="boxMove" class="boxMove"></span>
+		<div id="addDep" class="addDep">
+		</div>
+        <div id="newhtml" class="newhtml" style="height: 95%"></div>
+			 <div id="coor" class="coor"></div>
+		</div>
+
+			 <script>
+			var myChart;
+			var dom;
+			linedraggable('newhtml');
+			mouse(myChart,'#box','.coor');
+			closebutton('.close','box');//注意后面是‘box’
+			configButton('.config');
+
+			</script>
+		</div>
+	    <div id="box1"class="box" > 
+		<span id="close" class="close1"></span>
+		<span id="config" class="config1"></span>
+		<span id="boxMove" class="boxMove1"></span>
+		<div id="addDep1" class="addDep">
+        <div id="newhtml1" class="newhtml" style="height: 95%"></div>
+			 <div id="coor" class="coor1"></div>
+			 <script>
+			var myChart;
+			var dom;
+			area('newhtml1');
+			mouse(myChart,'#box1','.coor1');
+			closebutton('.close1','box1');
+			configButton('.config1');
+			</script>
+		</div>
+
+</body>
+</html>

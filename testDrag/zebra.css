@@ -1,0 +1,123 @@
+.zebra { 
+  background-color: #dddddd;
+  color: #666666;
+}
+
+tr.zebraHover {
+  background-color: #FFFACD;
+}
+.box	{	
+		width: 400px; 
+		height: 300px; 
+		position: absolute; 
+		top: 300px; left: 400px; 
+/*		background:transparent; */
+/*		background-color: #fff;*/
+		background-color:rgba(255,255,255,0.1);
+		border: 1px;  /* solid #CCCCCC -webkit-box-shadow: 10px 10px 25px #ccc;-moz-box-shadow: 10px 10px 25px #ccc;*/
+/*		box-shadow: 10px 10px 25px #ccc;*/
+		display:block;		
+		
+		}
+#box	{	/*这是固定显示框的位置*/
+		width: 400px; 
+		height: 300px; 
+		position: absolute; 
+		top: 30px; left: 30px; 
+/*		background:transparent; */
+/*		background-color: #fff;*/
+		background-color:rgba(255,255,255,0.1);
+		border: 1px;  /* solid #CCCCCC -webkit-box-shadow: 10px 10px 25px #ccc;-moz-box-shadow: 10px 10px 25px #ccc;*/
+/*		box-shadow: 10px 10px 25px #ccc;*/
+		display:block;		
+		
+		}
+
+#box1 {	/*这是固定显示框的位置*/
+		width: 400px; 
+		height: 300px; 
+		position: absolute; 
+		top: 30px; left: 530px; 
+/*		background:transparent; */
+/*		background-color: #fff;*/
+		background-color:rgba(255,255,255,0.1);
+		border: 1px;  /* solid #CCCCCC -webkit-box-shadow: 10px 10px 25px #ccc;-moz-box-shadow: 10px 10px 25px #ccc;*/
+/*		box-shadow: 10px 10px 25px #ccc;*/
+		display:block;		
+		
+		}
+#coor { width: 30px; /*,#coor11*/
+		height: 30px; 
+		overflow: hidden; 
+		cursor: se-resize; 
+		position: absolute; 
+		right: 0; 
+		bottom: 0; 
+		/*background-color: #09C;*/ }
+
+#boxMove {	/*.boxMove11*/
+		width: 50px; 
+		height: 50px; 
+		overflow: hidden; 
+		cursor: move; 
+		position: absolute; 
+		left: 0; 
+		top: 0;
+		}
+
+
+#close{/*,.close11*/
+	width:16px; 
+	float:right; 
+	height:18px; 
+	border:2px solid #cccccc; 
+	text-align:center; 
+	font-size:14px; 
+	font-weight:normal; 
+	line-height:24px; 
+	background:url(close.png) no-repeat; 
+	cursor:pointer;/*让鼠标移动到选项卡标题上的时候变成手的形状*/ 
+	}
+.newhtml{
+	position:absolute;
+	margin-top:20px;
+	margin-left:20px;
+	width:300px;
+	height:200px;
+
+	width: 90%;
+	height: 90%;
+
+	overflow: hidden; 
+	border:none;"
+	}
+#config{/*,.config11*/
+	width:20px; 
+	float:right; 
+	height:18px; 
+	border:2px solid #cccccc; 
+	text-align:center; 
+	font-size:14px; 
+	font-weight:normal; 
+	line-height:24px; 
+	background:url(config.png) no-repeat; 
+	cursor:pointer;/*让鼠标移动到选项卡标题上的时候变成手的形状*/ 
+	}
+.depth{/*,.depth1*/
+	width:100px; 
+	float:right; 
+	height:20px; 
+	border:2px solid #cccccc; 
+	text-align:center; 
+	font-size:14px; 
+	font-weight:normal; 
+/*	line-height:24px; /*设置行间距*/*/
+	background:url(depth.png) no-repeat; 
+	cursor:pointer;/*让鼠标移动到选项卡标题上的时候变成手的形状*/ 
+	}
+/*bar style*/
+.bar{position: absolute; width:270px;}/*left:70px;*/
+.progress_bg{height: 10px;width:270px; border: 1px solid #ddd; border-radius: 5px;overflow: hidden;background-color:#f2f2f2;}/**/
+.progress_bar{ width: 0; height: 10px; border-radius: 5px;background: #5FB878;position: absolute; top:1px;}/* position: absolute;*/
+.progress_btn{width: 20px; height: 20px; border-radius: 5px; position: absolute;background:#fff; left: 0px; margin-left: -10px; top:-5px; cursor: pointer;border:1px #ddd solid;box-sizing:border-box;}
+.progress_btn:hover{border-color:#F7B824;}

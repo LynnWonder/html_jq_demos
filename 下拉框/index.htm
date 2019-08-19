@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="prototype.lite.js" type="text/javascript"></script>
+<!-- 为对象添加属性 -->
+<script src="moo.fx.js" type="text/javascript"></script>
+<script src="moo.fx.pack.js" type="text/javascript"></script>
+<style>
+body {
+	font:12px Arial, Helvetica, sans-serif;
+	color: #000;
+}
+#container {
+	width: 500px;
+}
+H1 {
+	font-size: 11px;
+	margin: 0px;
+	width: 500px;
+	cursor: pointer;
+	height: 22px;
+	line-height: 20px;	
+}
+H1 a {
+	display: block;
+	padding-top: 1px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	padding-left: 8px;	
+	width: 500px;
+	color: #000;
+	height: 22px;
+	text-decoration: none;	
+	moz-outline-style: none;
+	background-image: url(title.gif);
+	background-repeat: repeat-x;
+}
+.content{
+	padding-left: 8px;
+}
+</style>
+</head>
+
+<body>
+	<div id="container">
+		<H1 class="title"><A href="javascript:void(0)">Ajax 入门两则 (2006-03-26 17:31:48)</a></H1>
+		<div class="content">
+			<p><a href="http://www.w3schools.com/ajax/default.asp" target="_blank">ajax tutorial</a> （这篇比较好，带有例子）</p>
+			<p><a href="http://www-128.ibm.com/developerworks/cn/xml/wa-ajaxintro1.html" target="_blank">掌握 ajax</a></p>
+			<p>最近看了几篇有关ajax的文章，对ajax有所了解。感觉学着玩玩还不错，不过真正用得的到，比用传统模式做网页有明显效果的时候并不多。比如在线实时通迅，所见既所得的文本编辑器。。。   希望今后有项目可以真正运用到ajax</p>
+			<p><a href="../../blog.php?bid=11" target="_blank">阅读全文</a></p>
+		</div>
+		<H1 class="title"><A href="javascript:void(0)">Flash &amp; Ajax 操作 XML 实例:无刷新分页 (2006-03-18 16:49:52)</a></H1>
+		<div class="content">
+			<p>其实标题只是一个噱头罢了，只是想谈一下，javascript 与 actionscript 是如何操作xml的。<br />
+			希望能帮助一些只用   javascript  或 只懂 actionscript 的朋友，了解两者的相同与不同之处。</p>
+			<p>flash 与 后台连接有许多种，actionscript 调用 xml() 算是比较简单的一种了，<br />
+			  而javascript 调用 xmlhttp   ，便形成了现在很流行的ajax了。</p>
+			<p>现在就用一个网上常出现的分页效果来对 flash 和 ajax 做个入门学习。  ( <a href="http://www.flaspx.com/weblog/tutorial/ajaxflashxml/" target="_blank">效果预览</a> ) ( <a href="http://www.flaspx.com/weblog/tutorial/ajaxflashxml/source.rar" target="_blank">源文件下载</a> )</p>
+			<p><a href="../../blog.php?bid=6" target="_blank">阅读全文</a></p>
+		</div>
+		<H1 class="title"><A href="javascript:void(0)">今天终于收到这本书啦 (2005-05-10 17:38:16)</a></H1>
+		<div class="content">
+		  <p>flash mx 2004 actionscript 2.0与ria应用程序开发</p>
+		  <p><img title="图片" alt="图片" src="../../upload/images/10_095823_roguPicture7.jpg" border="0" /></p>
+		  <p>五一节在当当网定的，不过最近也没空看，只能在考完试后认真研究了。<br />
+		    最近看高数都把脑子看僵掉了~~~~还有一个多月才能摆脱高数的折磨，想想就辛苦～～<br />
+	      </p>
+		  <p><a href="../../blog.php?bid=13" target="_blank">阅读全文</a></p>
+		</div>
+		<H1 class="title"><a href="javascript:void(0)">最美的70个英文单词 (2006-06-29 10:45:06)</a></H1>
+		<div class="content">
+			<p>以下所有图片是用Adobe Bridge找的，图片版权为Adobe所有。</p>
+			<p>根据对4万名海外投票者和英国文化协会在世界各地英语中心的学习者的调查显示，“母亲”(Mother)   是英语当中最优美的单词。此项调查为庆祝英国文化协会成立70周年而举办。<br /><br />
+			英国文化协会在华作为英国大使馆文化教育处开展工作。为开展上述调查工作，英国文化协会征求了46个国家7000多名英语学习者对英语中最优美单词的意见。此外，英国文化协会还通过自己的网站在网上征求了非英语国家的意见。非英语国抑?5000多人参加了投票，其中包括3500份来自中国的选票。<br /><br />
+			根据投票的结果，排在前70名的最优美的英语单词为：<br /><br />
+			1.   mother 母亲<br />
+			<img src="../../upload/images/mother.jpg"/>
+			<br /><br />
+		  	</p>
+			<p><a href="../../blog.php?bid=26" target="_blank">阅读全文</a></p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var contents = document.getElementsByClassName('content');
+		var toggles = document.getElementsByClassName('title');
+	
+		var myAccordion = new fx.Accordion(
+			toggles, contents, {opacity: true, duration: 400}
+		);
+		myAccordion.showThisHideOpen(contents[0]);
+	</script>
+</body>
+</html>
