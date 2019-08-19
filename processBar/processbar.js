@@ -1,5 +1,5 @@
 //$(function(){
-$(document).ready(function(){//Ö±½ÓÔËĞĞµÄº¯Êı
+$(document).ready(function(){//ç›´æ¥è¿è¡Œçš„å‡½æ•°
 	
  var tag = false,dx = 0,left = 0,bgleft = 0;
 // $('.progress_btn').mousedown(function(e) {
@@ -9,7 +9,7 @@ $(document).ready(function(){//Ö±½ÓÔËĞĞµÄº¯Êı
 // $(document).mouseup(function(e) {
 //  tag = false;
 // });
-// $('.progress_btn').mousemove(function(e) {//Êó±êÒÆ¶¯
+// $('.progress_btn').mousemove(function(e) {//é¼ æ ‡ç§»åŠ¨
 //  if (tag) {
 //   left = e.pageX - dx;
 //   if (left <= 0) {
@@ -39,7 +39,7 @@ $(document).ready(function(){//Ö±½ÓÔËĞĞµÄº¯Êı
 			};
 				document.onmouseup=new Function('this.onmousemove=null');
 		};
- $('.progress_bg').click(function(e) {//Êó±êµã»÷
+ $('.progress_bg').click(function(e) {//é¼ æ ‡ç‚¹å‡»
   if (!tag) {
    bgleft = $('.progress_bg').offset().left;
    left = e.pageX - bgleft;
@@ -54,7 +54,7 @@ $(document).ready(function(){//Ö±½ÓÔËĞĞµÄº¯Êı
   }
 //  alert(left);
  });
-  $('.progress_bar').click(function(e) {//Êó±êµã»÷
+  $('.progress_bar').click(function(e) {//é¼ æ ‡ç‚¹å‡»
   if (!tag) {
    bgleft = $('.progress_bar').offset().left;
    left = e.pageX - bgleft;
